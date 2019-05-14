@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">RegistroUsuarios-Movil</string>
+    <string name="txtNombre">Nombre</string>
+    <string name="txtEdad">Edad</string>
+    <string name="txtEstatura">Estatura</string>
+    <string name="txtEdadEstNombre">Edad-Estatura-Nombre</string>
+    <string name="btnAñadir">Añadir</string>
+    <string name="btnConsultar">Consultar</string>
+    <string name="btnLimpiar">Limpiar</string>
 </resources>
