@@ -3,11 +3,13 @@ package com.example.registrousuarios_movil.models;
 import com.example.registrousuarios_movil.utils.Rutinas;
 import com.example.registrousuarios_movil.utils.UtilsCriterioOrdenamiento;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Carlos Contreras
  */
-public class Usuario {
+public class Usuario implements Serializable {
 
     private String nombre;
     private int edad;

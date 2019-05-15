@@ -1,7 +1,9 @@
 package com.example.registrousuarios_movil.utils;
 
 
-public class Lista<T> {
+import java.io.Serializable;
+
+public class Lista<T> implements Serializable {
 
     private Nodo<T> Frente;
     private Nodo<T> Fin;
