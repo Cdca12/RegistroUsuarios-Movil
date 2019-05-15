@@ -9,8 +9,9 @@
     <RadioGroup
         android:id="@+id/radioGroup2"
         android:layout_width="0dp"
-        android:layout_height="25dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:checkedButton="@id/rdBtnNombre"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -22,28 +23,33 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/txtNombre" />
+            android:checked="false"
+            android:text="@string/txtNombre"
+            android:textSize="10sp" />
 
         <RadioButton
             android:id="@+id/rdBtnEdad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/txtEdad" />
+            android:text="@string/txtEdad"
+            android:textSize="10sp" />
 
         <RadioButton
             android:id="@+id/rdBtnEstatura"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/txtEstatura" />
+            android:text="@string/txtEstatura"
+            android:textSize="10sp" />
 
         <RadioButton
             android:id="@+id/rdBtnEdadEstNombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/txtEdadEstNombre" />
+            android:text="@string/txtEdadEstNombre"
+            android:textSize="10sp" />
     </RadioGroup>
 
     <TableLayout
@@ -151,7 +157,7 @@
             android:text="@string/btnConsultar" />
 
         <Button
-            android:id="@+id/btnEstatura"
+            android:id="@+id/btnLimpiar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

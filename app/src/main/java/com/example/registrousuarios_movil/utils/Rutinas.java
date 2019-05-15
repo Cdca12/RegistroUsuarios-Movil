@@ -1,0 +1,48 @@
+package com.example.registrousuarios_movil.utils;
+
+
+import java.util.*;
+
+public class Rutinas {
+
+    final static String[] PRODUCTOS = {
+    "Ajo", "Brocoli", "Cebolla", "Lechuga", "Papas", "Pepino", "Tomate", "Arroz", "Azucar",
+    "Cereal", "Galletas", "Gelatina", "Pan", "Nueces", "Ketchup", "Miel", "Agua", "Cafe",
+    "Cerveza", "Shampoo", "Desodorante", "Manzana", "Pera", "Leche", "Huevos", "Yogurth", "Pescado",
+    "Atun", "Papel", "Mayonesa" };
+
+    public static String nextProducto() {
+        return PRODUCTOS[nextInt(PRODUCTOS.length)];
+    }
+
+    static public int nextInt(int Valor) {
+        return new Random().nextInt(Valor);
+    }
+
+    static public int nextInt(int LimI, int LimS) {
+        return new Random().nextInt(LimS - LimI + 1) + LimI;
+    }
+
+    static public String PonBlancos(String Texto, int Tamaño) {
+        while (Texto.length() < Tamaño) {
+            Texto += " ";
+        }
+        return Texto;
+    }
+
+    static public String PonCeros(int Numero, int Tamaño) {
+        String Texto = Numero + "";
+        while (Texto.length() < Tamaño) {
+            Texto = "0" + Texto;
+        }
+        return Texto;
+    }
+    
+    static public String PonCeros(double numero, int tamaño) {
+    String texto = numero + "00000";
+        while (texto.length() < tamaño) {
+            texto = "0" + texto;
+        }
+        return texto;
+    }
+}
