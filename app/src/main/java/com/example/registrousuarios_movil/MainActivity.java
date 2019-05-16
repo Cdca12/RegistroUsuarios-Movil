@@ -1,7 +1,6 @@
 package com.example.registrousuarios_movil;
 
 import android.content.Intent;
-import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +9,7 @@ import android.widget.*;
 import com.example.registrousuarios_movil.models.Usuario;
 import com.example.registrousuarios_movil.utils.Lista;
 import com.example.registrousuarios_movil.utils.Nodo;
+import com.example.registrousuarios_movil.utils.Ordenamiento;
 import com.example.registrousuarios_movil.utils.UtilsCriterioOrdenamiento;
 
 public class MainActivity extends AppCompatActivity {
@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
         btnAñadir.setOnClickListener(view -> {
             listaUsuarios.InsertaOrdenado(new Usuario(editTextNombre.getText().toString(), Integer.parseInt(editTextEdad.getText().toString()), Double.parseDouble(editTextEstatura.getText().toString()), criterioOrdenamiento));
             limpiarCampos();
+            Toast toast = Toast.makeText(this, "El usuario se ha añadido correctamente", Toast.LENGTH_SHORT);
+            toast.show();
         });
         btnConsultar.setOnClickListener(view -> {
             // mostrarResultadosToast();
@@ -88,35 +90,48 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void cambiarCriterioOrdenamiento(View view) {
-        Toast mensajeToast = Toast.makeText(this, "Default", Toast.LENGTH_SHORT);
+        String mensajeToast = "Ordenado por ";
+        Toast toast;
         ; // Default
-        if (view == rdBtnNombre) {
-            mensajeToast = Toast.makeText(this, "Ordenado por Nombre", Toast.LENGTH_SHORT);
+        while (true) {
+            if (view == rdBtnNombre) {
+                mensajeToast += "Nombre";
+                criterioOrdenamiento = UtilsCriterioOrdenamiento.POR_NOMBRE;
+                break;
+            }
+            if (view == rdBtnEdad) {
+                mensajeToast += "Edad";
+                criterioOrdenamiento = UtilsCriterioOrdenamiento.POR_EDAD;
+                break;
+            }
+            if (view == rdBtnEstatura) {
+                mensajeToast += "Estatura";
+                criterioOrdenamiento = UtilsCriterioOrdenamiento.POR_ESTATURA;
+                break;
+            }
+            if (view == rdBtnEdadEstNombre) {
+                mensajeToast += "Edad-Estatura-Nombre";
+                criterioOrdenamiento = UtilsCriterioOrdenamiento.POR_EDAD_ESTATURA_NOMBRE;
+                break;
+            }
         }
-        if (view == rdBtnEdad) {
-            mensajeToast = Toast.makeText(this, "Ordenado por Edad", Toast.LENGTH_SHORT);
-        }
-        if (view == rdBtnEstatura) {
-            mensajeToast = Toast.makeText(this, "Ordenado por Estatura", Toast.LENGTH_SHORT);
-        }
-        if (view == rdBtnEdadEstNombre) {
-            mensajeToast = Toast.makeText(this, "Ordenado por Edad-Estatura-Nombre", Toast.LENGTH_SHORT);
-        }
-        mensajeToast.show();
+        Ordenamiento.ordenamientoIntercambio(listaUsuarios, criterioOrdenamiento);
+        toast = Toast.makeText(this, mensajeToast, Toast.LENGTH_SHORT);
+        toast.show();
 
     }
 
     public void mostrarResultadosToast() {
-        Toast mensajeToast;
+        Toast toastTest;
         Nodo<Usuario> usuarioAux = listaUsuarios.getFrente();
         int i = 0;
         String cadena;
         while (usuarioAux != null) {
             // TODO: mostrar otra Activity o un modal con los resultados
-            mensajeToast = Toast.makeText(this, usuarioAux.Info.mostrarInformacion(), Toast.LENGTH_SHORT);
+            toastTest = Toast.makeText(this, usuarioAux.Info.mostrarInformacion(), Toast.LENGTH_SHORT);
             // cadena = "Usuario " + (i + 1);
             // mensajeToast = Toast.makeText(this, cadena, Toast.LENGTH_SHORT);
-            mensajeToast.show();
+            toastTest.show();
             i++;
             usuarioAux = usuarioAux.getSig();
         }
