@@ -136,20 +136,4 @@ public class MainActivity extends AppCompatActivity {
         toast.show();
 
     }
-
-    public void mostrarResultadosToast() {
-        Toast toastTest;
-        Nodo<Usuario> usuarioAux = listaUsuarios.getFrente();
-        int i = 0;
-        String cadena;
-        while (usuarioAux != null) {
-            // TODO: mostrar otra Activity o un modal con los resultados
-            toastTest = Toast.makeText(this, usuarioAux.Info.mostrarInformacion(), Toast.LENGTH_SHORT);
-            // cadena = "Usuario " + (i + 1);
-            // mensajeToast = Toast.makeText(this, cadena, Toast.LENGTH_SHORT);
-            toastTest.show();
-            i++;
-            usuarioAux = usuarioAux.getSig();
-        }
-    }
 }
