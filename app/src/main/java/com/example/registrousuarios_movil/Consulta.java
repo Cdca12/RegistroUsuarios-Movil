@@ -18,6 +18,7 @@ import com.example.registrousuarios_movil.utils.Nodo;
 public class Consulta extends AppCompatActivity {
 
     private Lista<Usuario> listaUsuarios;
+    private TextView txtCriterioOrdenamiento;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,8 @@ public class Consulta extends AppCompatActivity {
         setContentView(R.layout.activity_consulta);
 
         listaUsuarios = (Lista<Usuario>) getIntent().getSerializableExtra("listaUsuarios");
+        txtCriterioOrdenamiento = (TextView) findViewById(R.id.txtCriterioOrdenamiento);
+        txtCriterioOrdenamiento.setText(txtCriterioOrdenamiento.getText() + " " + getIntent().getStringExtra("CriterioOrdenamiento"));
         rellenarTabla();
     }
 

@@ -86,6 +86,22 @@ public class MainActivity extends AppCompatActivity {
     private void mostrarResultados() {
         Intent intent = new Intent(this, Consulta.class);
         intent.putExtra("listaUsuarios", listaUsuarios);
+        String criterio = "";
+        switch (criterioOrdenamiento) {
+            case UtilsCriterioOrdenamiento.POR_NOMBRE:
+                criterio = "Nombre";
+                break;
+            case UtilsCriterioOrdenamiento.POR_EDAD:
+                criterio = "Edad";
+                break;
+            case UtilsCriterioOrdenamiento.POR_ESTATURA:
+                criterio = "Estatura";
+                break;
+            case UtilsCriterioOrdenamiento.POR_EDAD_ESTATURA_NOMBRE:
+                criterio = "Edad-Estatura-Nombre";
+                break;
+        }
+        intent.putExtra("CriterioOrdenamiento", criterio);
         startActivity(intent);
     }
 
