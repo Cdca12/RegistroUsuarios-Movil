@@ -105,7 +105,8 @@ public class MainActivity extends AppCompatActivity {
         if(!abrirConexionBaseDeDatos()) {
             return;
         }
-        String datos = "ID\tNombre\tEdad\tEstatura\n", query = "SELECT * FROM USUARIOS;";
+        String datos = "Nombre\t\t\t\t\t\t\t\tEdad\t\t\t\t\t\t\t\tEstatura\n-------------------------------------------------------------\n",
+                query = "SELECT * FROM USUARIOS;";
         Cursor cursor = bd.rawQuery(query, null);
         // bd.close();
         if (cursor.getCount() == 0) {
@@ -115,9 +116,9 @@ public class MainActivity extends AppCompatActivity {
         }
         cursor.moveToFirst(); // Posiciona cursor al principio
         do {
-            datos += cursor.getString(0) + "\t" // ID
-                    +cursor.getString(1) + "\t" // Nombre
-                    +cursor.getString(2) + "\t" // Edad
+            datos += // cursor.getString(0) + "\t" // ID
+                    cursor.getString(1) + "\t\t\t\t\t\t\t\t\t\t\t " // Nombre
+                    +cursor.getString(2) + "\t\t\t\t\t\t\t\t\t\t\t" // Edad
                     +cursor.getString(3) + "\n"; // Estatura
         }
         while (cursor.moveToNext());
