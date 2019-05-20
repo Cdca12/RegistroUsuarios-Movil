@@ -1,5 +1,6 @@
 package com.example.registrousuarios_movil;
 
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.TypedValue;
@@ -40,6 +41,12 @@ public class Consulta extends AppCompatActivity {
                 TableRow.LayoutParams.MATCH_PARENT,
                 1.0f
         );
+
+//        // Abrir conexión a Base de Datos
+//        if (!abrirConexionBaseDeDatos()) {
+//            return;
+//        }
+
         for (Nodo<Usuario> usuarioAux = listaUsuarios.getFrente(); usuarioAux != null; usuarioAux = usuarioAux.getSig()) {
             row = new TableRow(this);
 
@@ -68,4 +75,16 @@ public class Consulta extends AppCompatActivity {
         }
 
     }
+
+//    public boolean abrirConexionBaseDeDatos() {
+//        bd = conexion.getWritableDatabase();
+//        if(bd == null){
+//            AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+//            alertDialog.setTitle("Error Permisos");
+//            alertDialog.setMessage("La base de datos no está abierta para escritura");
+//            alertDialog.show();
+//            return false;
+//        }
+//        return true;
+//    }
 }
