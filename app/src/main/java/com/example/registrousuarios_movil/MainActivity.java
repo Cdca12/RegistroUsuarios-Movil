@@ -208,7 +208,7 @@ public class MainActivity extends AppCompatActivity {
         }
         query = "DELETE FROM USUARIOS";
         bd.execSQL(query);
-        Toast toast = Toast.makeText(this, "Se han eliminado a todos los usuarios", Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(this, "Se ha eliminado a todos los usuarios", Toast.LENGTH_SHORT);
         toast.show();
         bd.close();
     }
