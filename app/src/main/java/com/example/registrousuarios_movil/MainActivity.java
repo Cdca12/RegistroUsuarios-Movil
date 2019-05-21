@@ -189,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public boolean conectarBaseDeDatos() {
-        conexion = new BaseDeDatos(this, "BDUSUARIOS", null, conexion.version);
+        conexion = conexion.getInstance(this);
         if(conexion == null) {
             AlertDialog alertDialog = new AlertDialog.Builder(this).create();
             alertDialog.setMessage("No fue posible conectarse a la base de datos");
