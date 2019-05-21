@@ -70,8 +70,6 @@ public class MainActivity extends AppCompatActivity {
                     "VALUES ('" + editTextNombre.getText().toString() + "', "
                     + editTextEdad.getText().toString() + ", "
                     + editTextEstatura.getText().toString() + ");";
-
-            // listaUsuarios.InsertaOrdenado(new Usuario(editTextNombre.getText().toString(), Integer.parseInt(editTextEdad.getText().toString()), Double.parseDouble(editTextEstatura.getText().toString()), criterioOrdenamiento));
             limpiarCampos();
             bd.execSQL(query);
             bd.close(); // Cerrar conexión a Base de Datos por seguridad
@@ -79,8 +77,8 @@ public class MainActivity extends AppCompatActivity {
             toast.show();
         });
         btnConsultar.setOnClickListener(view -> {
-            // mostrarResultados()
-            mostrarResultadosBaseDeDatos();
+            mostrarResultados();
+            // mostrarResultadosBaseDeDatos(); TEST
             limpiarCampos();
         });
         btnLimpiar.setOnClickListener(view -> {
@@ -122,10 +120,12 @@ public class MainActivity extends AppCompatActivity {
                     +cursor.getString(3) + "\n"; // Estatura
         }
         while (cursor.moveToNext());
+        bd.close(); // Cerrar conexión
         AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.setTitle("Datos");
         alertDialog.setMessage(datos);
         alertDialog.show();
+
     }
 
     private void limpiarCampos() {
@@ -137,23 +137,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void mostrarResultados() {
         Intent intent = new Intent(this, Consulta.class);
-        // intent.putExtra("listaUsuarios", listaUsuarios);
-        String criterio = "";
-        switch (criterioOrdenamiento) {
-            case UtilsCriterioOrdenamiento.POR_NOMBRE:
-                criterio = "Nombre";
-                break;
-            case UtilsCriterioOrdenamiento.POR_EDAD:
-                criterio = "Edad";
-                break;
-            case UtilsCriterioOrdenamiento.POR_ESTATURA:
-                criterio = "Estatura";
-                break;
-            case UtilsCriterioOrdenamiento.POR_EDAD_ESTATURA_NOMBRE:
-                criterio = "Edad-Estatura-Nombre";
-                break;
-        }
-        intent.putExtra("CriterioOrdenamiento", criterio);
+        intent.putExtra("CriterioOrdenamiento", criterioOrdenamiento);
         startActivity(intent);
     }
 
