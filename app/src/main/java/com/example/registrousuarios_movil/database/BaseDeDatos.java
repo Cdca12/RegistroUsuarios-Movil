@@ -14,7 +14,7 @@ public class BaseDeDatos extends SQLiteOpenHelper {
             "   usuario_edad integer NOT NULL," +
             "   usuario_estatura real NOT NULL);";
 
-    public BaseDeDatos(Context contexto, String nombre, SQLiteDatabase.CursorFactory factory, int version) {
+    private BaseDeDatos(Context contexto, String nombre, SQLiteDatabase.CursorFactory factory, int version) {
         super(contexto, nombre, factory, version);
     }
 
