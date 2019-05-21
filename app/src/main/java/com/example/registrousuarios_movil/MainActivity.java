@@ -18,7 +18,7 @@ import com.example.registrousuarios_movil.utils.UtilsCriterioOrdenamiento;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnAñadir, btnConsultar, btnLimpiar;
+    private Button btnAñadir, btnConsultar, btnLimpiar, btnEliminar;
     private RadioButton rdBtnNombre, rdBtnEdad, rdBtnEstatura, rdBtnEdadEstNombre;
     private EditText editTextNombre, editTextEdad, editTextEstatura;
     private String query;
@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         btnAñadir = (Button) findViewById(R.id.btnAñadir);
         btnConsultar = (Button) findViewById(R.id.btnConsultar);
         btnLimpiar = (Button) findViewById(R.id.btnLimpiar);
+        btnEliminar = (Button) findViewById(R.id.btnEliminar);
 
         rdBtnNombre = (RadioButton) findViewById(R.id.rdBtnNombre);
         rdBtnEdad = (RadioButton) findViewById(R.id.rdBtnEdad);
@@ -83,6 +84,9 @@ public class MainActivity extends AppCompatActivity {
         });
         btnLimpiar.setOnClickListener(view -> {
             limpiarCampos();
+        });
+        btnEliminar.setOnClickListener(view -> {
+            eliminarUsuario();
         });
         rdBtnNombre.setOnClickListener(view -> {
             cambiarCriterioOrdenamiento(view);
@@ -196,5 +200,16 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+
+    private void eliminarUsuario() {
+        if (!abrirConexionBaseDeDatos()) {
+            return;
+        }
+        query = "DELETE FROM USUARIOS";
+        bd.execSQL(query);
+        Toast toast = Toast.makeText(this, "Se han eliminado a todos los usuarios", Toast.LENGTH_SHORT);
+        toast.show();
+        bd.close();
     }
 }

@@ -7,4 +7,5 @@
     <string name="btnAñadir">Añadir</string>
     <string name="btnConsultar">Consultar</string>
     <string name="btnLimpiar">Limpiar</string>
+    <string name="btnEliminar">Eliminar</string>
 </resources>
